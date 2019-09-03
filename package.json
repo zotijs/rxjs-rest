@@ -1,0 +1,22 @@
+{
+  "name": "rxjs-rest",
+  "version": "1.0.0",
+  "description": "learning rxjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "test"
+  },
+  "author": "zotijs",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.1.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.3.2",
+    "nodemon": "^1.19.1"
+  }
+}
