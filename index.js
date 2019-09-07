@@ -1,6 +1,10 @@
 const express = require("express");
+const mongoCreate = require("./middlewares/mongo");
 
 const app = express();
+
+//initialize mongodb instance
+app.use(mongoCreate);
 
 require("./routes/usersRoutes")(app);
 
