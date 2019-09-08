@@ -3,3 +3,7 @@
 
 # config
 config/dev.js
+
+# folders
+/uploads
+/logs
