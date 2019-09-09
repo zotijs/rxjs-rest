@@ -7,7 +7,7 @@ import {
 
 export const usersReducer = (state = {}, action) => {
   if (action === FETCH_USERS) return {};
-  if (action == FETCH_USERS_FULFILLED)
+  if (action === FETCH_USERS_FULFILLED)
     return { ...state, ..._.mapKeys(action.payload, "id") };
 
   return state;

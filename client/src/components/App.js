@@ -1,22 +1,21 @@
 import React from "react";
-import { connect } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "./Header";
+import Menu from "./Menu";
+import Welcome from "./Welcome";
 
-const App = props => {
-  console.log(props);
+const App = () => {
   return (
-    <div>
-      <p>Helloooooo there</p>
+    <div className="ui container">
+      <BrowserRouter>
+        <Header />
+        <Menu />
+        <Switch>
+          <Route path="/" exact component={Welcome} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    users: state.users
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(App);
+export default App;
