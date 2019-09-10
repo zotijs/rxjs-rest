@@ -8,21 +8,21 @@ const Menu = () => {
         <i className="home icon"></i>
       </Link>
       <Link to="/users" className="item">
-        People
+        Users
       </Link>
       <Link
-        to="/cats"
+        to="/posts"
         style={{ pointerEvents: "none" }}
         className="disabled item"
       >
-        Cats
+        Posts
       </Link>
       <Link
-        to="/plants"
+        to="/groups"
         style={{ pointerEvents: "none" }}
         className="disabled item"
       >
-        Plants
+        Groups
       </Link>
     </div>
   );
