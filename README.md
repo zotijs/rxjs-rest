@@ -10,6 +10,7 @@ Is a demo using React, Redux, Redux-Observable, NodeJs and MongoDB, to create an
 
 >TO-DO:
 >-
+> - implement redux hooks to the client (useSelector, useDispatch).
 > - implement the rest of the CRUD operations to the client.
 > - implement streams (rxjs) to the server.
 > - add files support to the server (images, log files).
