@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers, fetchUsersRejected } from "../actions";
 import Person from "./Person";
+import styles from "./styles.module.css";
 
 const PeopleList = props => {
   useEffect(() => {
@@ -9,10 +10,17 @@ const PeopleList = props => {
   }, []);
 
   return (
-    <div className="ui three column grid container">
-      {props.users.map(user => (
-        <Person key={user._id} {...user} />
-      ))}
+    <div className="ui container">
+      <div className="ui three column grid container">
+        {props.users.map(user => (
+          <Person key={user._id} {...user} />
+        ))}
+      </div>
+      <div className={styles.plusContainer}>
+        <button className="ui circular red icon button big">
+          <i className="plus icon"></i>
+        </button>
+      </div>
     </div>
   );
 };
