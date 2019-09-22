@@ -17,7 +17,7 @@ const PeopleList = props => {
         ))}
       </div>
       <div className={styles.plusContainer}>
-        <button className="ui circular red icon button big">
+        <button className="ui circular primary icon button huge">
           <i className="plus icon"></i>
         </button>
       </div>

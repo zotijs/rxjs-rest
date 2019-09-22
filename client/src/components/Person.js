@@ -6,7 +6,7 @@ const Person = props => {
     <div className="column">
       <div className="ui fluid card">
         <div className="image">
-          <img alt="a person image" src={props.fakeImage} />
+          <img alt="a person" src={props.fakeImage} />
         </div>
         <div className="content">
           <div className="header">
