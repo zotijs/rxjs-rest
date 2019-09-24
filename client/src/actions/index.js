@@ -4,7 +4,10 @@ import {
   FETCH_USERS_REJECTED,
   FETCH_USER,
   FETCH_USER_FULFILLED,
-  FETCH_USER_REJECTED
+  FETCH_USER_REJECTED,
+  DELETE_USER,
+  DELETE_USER_FULFILLED,
+  DELETE_USER_REJECTED
 } from "./types";
 
 //fetch users
@@ -27,6 +30,18 @@ export const fetchUserFulfilled = payload => ({
 });
 export const fetchUserRejected = payload => ({
   type: FETCH_USER_REJECTED,
+  payload,
+  error: true
+});
+
+//delete user
+export const deleteUser = id => ({ type: DELETE_USER, payload: id });
+export const deleteUserFulfilled = payload => ({
+  type: DELETE_USER_FULFILLED,
+  payload
+});
+export const deleteUserRejected = payload => ({
+  type: DELETE_USER_REJECTED,
   payload,
   error: true
 });

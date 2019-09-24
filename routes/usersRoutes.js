@@ -67,7 +67,6 @@ module.exports = (app, upload) => {
 
   app.patch("/api/users/:id", checkForId, upload.none(), async (req, res) => {
     //const { name, surename, description, image } = req.body;
-    debugger;
     try {
       res.send(
         (await req.app.locals.db.collection(USERS_COLLECTION).updateOne(

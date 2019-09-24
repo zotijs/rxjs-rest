@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUsers, fetchUsersRejected } from "../actions";
+import {
+  fetchUsers,
+  fetchUsersRejected,
+  deleteUser,
+  deleteUserRejected
+} from "../actions";
 import Person from "./Person";
 import styles from "./styles.module.css";
 
@@ -13,7 +18,11 @@ const PeopleList = props => {
     <div className="ui container">
       <div className="ui three column grid container">
         {props.users.map(user => (
-          <Person key={user._id} {...user} />
+          <Person
+            key={user._id}
+            {...user}
+            onUserDelete={id => props.deleteUser(id)}
+          />
         ))}
       </div>
       <div className={styles.plusContainer}>
@@ -34,5 +43,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchUsers, fetchUsersRejected }
+  {
+    fetchUsers,
+    fetchUsersRejected,
+    deleteUser,
+    deleteUserRejected
+  }
 )(PeopleList);

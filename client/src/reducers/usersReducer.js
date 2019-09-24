@@ -1,10 +1,28 @@
 import _ from "lodash";
-import { FETCH_USERS, FETCH_USERS_FULFILLED } from "../actions/types";
+import {
+  FETCH_USERS,
+  FETCH_USERS_FULFILLED,
+  FETCH_USER,
+  FETCH_USER_FULFILLED,
+  DELETE_USER,
+  DELETE_USER_FULFILLED
+} from "../actions/types";
 
 export const usersReducer = (state = {}, action) => {
-  if (action.type === FETCH_USERS) return {};
-  if (action.type === FETCH_USERS_FULFILLED)
-    return { ...state, ..._.mapKeys(action.payload, "_id") };
-
-  return state;
+  switch (action.type) {
+    case FETCH_USERS:
+    case FETCH_USER:
+      return {};
+    case DELETE_USER:
+      return state;
+    case FETCH_USERS_FULFILLED:
+      return { ...state, ..._.mapKeys(action.payload, "_id") };
+    case FETCH_USER_FULFILLED:
+      return { ...state, [action.payload._id]: action.payload };
+    case DELETE_USER_FULFILLED:
+      debugger;
+      return _.omit(state, action.payload);
+    default:
+      return state;
+  }
 };

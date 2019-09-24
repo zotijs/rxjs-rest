@@ -91,9 +91,9 @@ const Profile = props => {
   );
 };
 
-const mapStateToProps = ({ user, usersErrors }, ownProps) => {
+const mapStateToProps = ({ users, usersErrors }, ownProps) => {
   return {
-    user: user[ownProps.match.params.id],
+    user: users[ownProps.match.params.id],
     error: usersErrors
   };
 };

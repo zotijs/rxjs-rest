@@ -18,16 +18,22 @@ const Person = props => {
         </div>
         <div className="extra content">
           <span className="left floated">
-            <Link to={`/users/${props._id}`}>
+            <Link
+              className="circular ui icon button"
+              to={`/users/${props._id}`}
+            >
               <i className="edit icon"></i>
               Edit
             </Link>
           </span>
           <span className="right floated">
-            <Link>
+            <button
+              className="circular ui icon button"
+              onClick={() => props.onUserDelete(props._id)}
+            >
               <i className="close icon"></i>
               Delete
-            </Link>
+            </button>
           </span>
         </div>
       </div>
