@@ -5,14 +5,18 @@ import {
   fetchUsersRejected,
   deleteUser,
   deleteUserRejected
-} from "../actions";
-import Person from "./Person";
-import styles from "./styles.module.css";
+} from "../../actions";
+import Person from "../person/Person";
+import styles from "./people.module.css";
 
 const PeopleList = props => {
-  useEffect(() => {
-    props.fetchUsers();
-  }, []);
+  useEffect(
+    () => {
+      props.fetchUsers();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   return (
     <div className="ui container">
@@ -41,12 +45,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    fetchUsers,
-    fetchUsersRejected,
-    deleteUser,
-    deleteUserRejected
-  }
-)(PeopleList);
+export default connect(mapStateToProps, {
+  fetchUsers,
+  fetchUsersRejected,
+  deleteUser,
+  deleteUserRejected
+})(PeopleList);

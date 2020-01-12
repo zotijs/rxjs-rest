@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUser, fetchUserRejected } from "../actions";
-import styles from "./styles.module.css";
+import { fetchUser, fetchUserRejected } from "../../actions";
+import styles from "./profile.module.css";
 
 const Profile = props => {
-  useEffect(() => {
-    props.fetchUser(props.match.params.id);
-  }, []);
+  useEffect(
+    () => {
+      props.fetchUser(props.match.params.id);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   return (
     <>
@@ -98,7 +102,6 @@ const mapStateToProps = ({ users, usersErrors }, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchUser, fetchUserRejected }
-)(Profile);
+export default connect(mapStateToProps, { fetchUser, fetchUserRejected })(
+  Profile
+);

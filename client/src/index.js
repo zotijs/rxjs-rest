@@ -6,7 +6,7 @@ import { createEpicMiddleware } from "redux-observable";
 import reducers from "./reducers";
 import epics from "./epics";
 import * as serviceWorker from "./serviceWorker";
-import App from "./components/App";
+import App from "./components/app/App";
 
 /*
 enable redux dev tools debug sessions in order to 
