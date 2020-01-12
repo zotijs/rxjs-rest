@@ -1,0 +1,24 @@
+.plusContainer{
+	position:fixed;
+	bottom:20px;
+    right:20px;
+}
+
+.imageContainer {
+	width: 200px;
+	height: 200px;
+	border: 1px solid #808080;
+	border-radius: 2px;
+	padding: 3px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.imageInnerContainer {
+	margin: 0;
+	background: #E5E5E5;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	line-height: 150px;
+}
