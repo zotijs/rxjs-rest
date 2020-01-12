@@ -20,7 +20,6 @@ module.exports = (app, upload) => {
   });
 
   app.get("/api/users/:id", checkForId, async (req, res) => {
-    debugger;
     try {
       res.send(
         await req.app.locals.db
