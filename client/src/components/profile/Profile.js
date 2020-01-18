@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUser, fetchUserRejected } from "../../actions";
+import { fetchUser, fetchUserRejected } from "models/user/actions";
 import styles from "./profile.module.css";
 
 const Profile = props => {
@@ -60,33 +60,6 @@ const Profile = props => {
               <button className="ui circular icon button">
                 <i className="coffee icon"></i>
               </button>
-              <button className="ui circular icon button">
-                <i className="compass icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="edit icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="envelope icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="sitemap icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="registered icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="square full icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="bug icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="code icon"></i>
-              </button>
-              <button className="ui circular icon button">
-                <i className="window minimize icon"></i>
-              </button>
             </div>
           </div>
         </div>
@@ -95,10 +68,10 @@ const Profile = props => {
   );
 };
 
-const mapStateToProps = ({ users, usersErrors }, ownProps) => {
+const mapStateToProps = ({ userReducer }, ownProps) => {
   return {
-    user: users[ownProps.match.params.id],
-    error: usersErrors
+    user: userReducer ? userReducer[ownProps.match.params.id] : {} //,
+    //error: usersErrors
   };
 };
 

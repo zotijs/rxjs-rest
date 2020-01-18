@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import {
-  fetchUsers,
-  fetchUsersRejected,
-  deleteUser,
-  deleteUserRejected
-} from "../../actions";
-import Person from "../person/Person";
+import { fetchUsers, fetchUsersRejected } from "models/users/actions";
+import { deleteUser, deleteUserRejected } from "models/user/actions";
+import { Person } from "./components";
 import styles from "./people.module.css";
 
 const PeopleList = props => {
@@ -40,8 +36,8 @@ const PeopleList = props => {
 
 const mapStateToProps = state => {
   return {
-    users: Object.values(state.users),
-    errors: state.usersErrors
+    users: state.usersReducer ? Object.values(state.usersReducer) : [] //,
+    //errors: state.usersErrors ? state.usersErrors : []
   };
 };
 
