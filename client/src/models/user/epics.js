@@ -2,16 +2,9 @@ import { of } from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { map, catchError, mergeMap } from "rxjs/operators";
 import { ofType } from "redux-observable";
-import {
-  fetchUser,
-  fetchUserFulfilled,
-  fetchUserRejected,
-  deleteUser,
-  deleteUserFulfilled,
-  deleteUserRejected
-} from "./actions";
+import { fetchUser, fetchUserFulfilled, fetchUserRejected } from "./actions";
 
-const fetchUserEpic = action$ =>
+export default action$ =>
   action$.pipe(
     ofType(fetchUser.type),
     mergeMap(action =>
@@ -26,21 +19,3 @@ const fetchUserEpic = action$ =>
       )
     )
   );
-
-const deleteUserEpic = action$ =>
-  action$.pipe(
-    ofType(deleteUser.type),
-    mergeMap(action =>
-      ajax.delete(`http://localhost:3000/api/users/${action.payload}`).pipe(
-        map(response => deleteUserFulfilled(action.payload)),
-        catchError(error =>
-          of({
-            type: deleteUserRejected.type,
-            payload: error.xhr.response
-          })
-        )
-      )
-    )
-  );
-
-export { fetchUserEpic, deleteUserEpic };

@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// import { connect } from "react-redux";
-// import { fetchUser, fetchUserRejected } from "models/user/actions";
 import styles from "./profile.module.css";
 
 const Profile = ({ match, user, fetchUser }) => {
@@ -69,14 +67,3 @@ const Profile = ({ match, user, fetchUser }) => {
 };
 
 export default Profile;
-
-// const mapStateToProps = ({ userReducer }, ownProps) => {
-//   return {
-//     user: userReducer ? userReducer[ownProps.match.params.id] : {} //,
-//     //error: usersErrors
-//   };
-// };
-
-// export default connect(mapStateToProps, { fetchUser, fetchUserRejected })(
-//   Profile
-// );
