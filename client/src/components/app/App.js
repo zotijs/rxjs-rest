@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import Menu from "./Menu";
-import Welcome from "./Welcome";
-import PeopleList from "./PeopleList";
-import Profile from "./Profile";
+import Header from "components/header/Header";
+import Menu from "components/menu/Menu";
+import Welcome from "components/welcome/Welcome";
+import PeopleList from "components/people";
+import Profile from "components/profile";
 
 const App = () => {
   return (

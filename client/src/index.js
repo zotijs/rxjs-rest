@@ -1,40 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
-import { createEpicMiddleware } from "redux-observable";
-import reducers from "./reducers";
-import epics from "./epics";
 import * as serviceWorker from "./serviceWorker";
-import App from "./components/App";
+import App from "components/app/App";
+import ModelProvider from "libraries/ModelProvider";
+import { epics as usersEpics, reducer as usersReducer } from "models/users";
+import { epics as userEpic, reducer as userReducer } from "models/user";
 
-/*
-enable redux dev tools debug sessions in order to 
-save all data in redux store betweeh refreshes of the page:
-http://localhost:3000/?debug_session=<some_random_string>
-*
-*
-we could use named debug sessions in order to jump between states we want to debug
-for example:
-http://localhost:3000/?debug_session=logged_in //-> for the state where the user is logged in
-http://localhost:3000/?debug_session=logged_out //-> for the state where the user is logged out
-*/
+const { fetchUsersEpic, deleteUserEpic } = usersEpics;
 
-const epicMiddleware = createEpicMiddleware();
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  reducers,
-  composeEnhancers(applyMiddleware(epicMiddleware))
-);
-
-epicMiddleware.run(epics);
+const epicsList = [userEpic, fetchUsersEpic, deleteUserEpic];
+const reducersList = [usersReducer, userReducer];
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ModelProvider epics={epicsList} reducers={reducersList}>
     <App />
-  </Provider>,
+  </ModelProvider>,
   document.querySelector("#root")
 );
 
