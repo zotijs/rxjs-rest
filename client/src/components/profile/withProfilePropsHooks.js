@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { useProps } from "libraries/model";
-import { userSelector } from "models/user/props";
+import { user, isLoading, error } from "models/user/props";
 import { fetchUser } from "models/user/actions";
 
 const withProfileProps = Component => {
@@ -9,7 +9,9 @@ const withProfileProps = Component => {
   return props => {
     const modelProps = useProps(
       {
-        user: userSelector(props.match.params.id)
+        user: user(props.match.params.id),
+        isLoading,
+        error
       },
       {
         fetchUser

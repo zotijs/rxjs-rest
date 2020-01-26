@@ -1,14 +1,17 @@
 import { fetchUser, fetchUserFulfilled, fetchUserRejected } from "./actions";
-import { user } from "./props";
+import { createState, createLoadingState, createErrorState } from "./props";
 
-export const userReducer = (state = {}, action) => {
+export const userReducer = (
+  state = { user: {}, isLoading: true, error: null },
+  action
+) => {
   switch (action.type) {
     case fetchUser.type:
-      return {};
+      return createLoadingState(state, action.payload);
     case fetchUserFulfilled.type:
-      return user(state, action.payload);
+      return createState(state, action.payload);
     case fetchUserRejected.type:
-      return action.payload;
+      return createErrorState(state, action.payload);
     default:
       return state;
   }

@@ -1,12 +1,42 @@
 import _ from "lodash";
 
 //state
-const users = (state, payload) => ({ ...state, ..._.mapKeys(payload, "_id") });
-const afterUserDeleted = (state, payload) => _.omit(state, payload);
-//const error = errorObject => ({});
+const createState = ({ users }, payload) => ({
+  users: {
+    ...users,
+    ..._.mapKeys(payload, "_id")
+  },
+  isLoading: false,
+  error: null
+});
+const createLoadingState = (state, payload) => ({
+  ...state,
+  isLoading: true,
+  error: null
+});
+const createErrorState = (state, payload) => ({
+  ...state,
+  isLoading: false,
+  error: { ...payload }
+});
+const afterUserDeleted = ({ users }, payload) => ({
+  users: _.omit(users, payload),
+  isLoading: false,
+  error: null
+});
 
 //state selectors
-const usersSelector = ({ usersReducer }) =>
-  usersReducer && Object.values(usersReducer);
+const users = ({ usersReducer }) =>
+  usersReducer && usersReducer.users && Object.values(usersReducer.users);
+const isLoading = ({ usersReducer }) => usersReducer && usersReducer.isLoading;
+const error = ({ usersReducer }) => usersReducer && usersReducer.error;
 
-export { users, usersSelector, afterUserDeleted };
+export {
+  createState,
+  createLoadingState,
+  createErrorState,
+  afterUserDeleted,
+  users,
+  isLoading,
+  error
+};

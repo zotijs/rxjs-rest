@@ -6,22 +6,29 @@ import {
   deleteUserFulfilled,
   deleteUserRejected
 } from "./actions";
-import { users, afterUserDeleted } from "./props";
+import {
+  createState,
+  createLoadingState,
+  createErrorState,
+  afterUserDeleted
+} from "./props";
 
-export const usersReducer = (state = {}, action) => {
+export const usersReducer = (
+  state = { users: {}, isLoading: true, error: null },
+  action
+) => {
   switch (action.type) {
     case fetchUsers.type:
-      return {};
+      return createLoadingState(state, action.payload);
     case fetchUsersFulfilled.type:
-      return users(state, action.payload);
+      return createState(state, action.payload);
     case fetchUsersRejected.type:
-      return action.payload;
+    case deleteUserRejected.type:
+      return createErrorState(state, action.payload);
     case deleteUser.type:
       return state; //need state for the omit function in DELETE_USER_FULFILLED
     case deleteUserFulfilled.type:
       return afterUserDeleted(state, action.payload);
-    case deleteUserRejected.type:
-      return action.payload;
     default:
       return state;
   }

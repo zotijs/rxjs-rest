@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
+import { Loader, ErrorCmp } from "components/common";
 import styles from "./profile.module.css";
 
-const Profile = ({ match, user, fetchUser }) => {
+const Profile = ({ match, user, isLoading, error, fetchUser }) => {
   useEffect(
     () => {
       fetchUser(match.params.id);
@@ -9,6 +10,9 @@ const Profile = ({ match, user, fetchUser }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorCmp {...error} />;
 
   return (
     <>
