@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { useProps } from "libraries/model";
-import { usersSelector } from "models/users/props";
+import { users, isLoading, error } from "models/users/props";
 import { fetchUsers } from "models/users/actions";
 import { deleteUser } from "models/users/actions";
 
@@ -10,7 +10,9 @@ const withPeopleProps = Component => {
   return props => {
     const modelProps = useProps(
       {
-        usersSelector
+        users,
+        isLoading,
+        error
       },
       {
         fetchUsers,

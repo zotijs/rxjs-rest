@@ -1,10 +1,31 @@
-import _ from "lodash";
-
 //state
-const user = (state, payload) => ({ ...state, [payload._id]: payload });
-//const error = errorObject => ({});
+const createState = ({ user }, payload) => ({
+  user: { ...user, [payload._id]: payload },
+  isLoading: false,
+  error: null
+});
+const createLoadingState = (state, payload) => ({
+  ...state,
+  isLoading: true,
+  error: null
+});
+const createErrorState = (state, payload) => ({
+  ...state,
+  isLoading: false,
+  error: { ...payload }
+});
 
 //state selectors
-const userSelector = id => ({ userReducer }) => userReducer[id];
+const user = id => ({ userReducer }) =>
+  userReducer && userReducer.user && userReducer.user[id];
+const isLoading = ({ userReducer }) => userReducer && userReducer.isLoading;
+const error = ({ userReducer }) => userReducer && userReducer.error;
 
-export { user, userSelector };
+export {
+  createState,
+  createLoadingState,
+  createErrorState,
+  user,
+  isLoading,
+  error
+};

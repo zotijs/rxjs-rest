@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Person } from "./components";
+import { Loader, ErrorCmp } from "components/common";
 import styles from "./people.module.css";
 
-const PeopleList = ({ usersSelector, fetchUsers, deleteUser }) => {
+const PeopleList = ({ users, isLoading, error, fetchUsers, deleteUser }) => {
   useEffect(
     () => {
       fetchUsers();
@@ -11,11 +12,14 @@ const PeopleList = ({ usersSelector, fetchUsers, deleteUser }) => {
     []
   );
 
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorCmp {...error} />;
+
   return (
     <div className="ui container">
       <div className="ui three column grid container">
-        {usersSelector &&
-          usersSelector.map(user => (
+        {users &&
+          users.map(user => (
             <Person
               key={user._id}
               {...user}
