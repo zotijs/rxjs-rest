@@ -1,5 +1,5 @@
 import PeopleList from "./PeopleList";
-import withPeopleProps from "./withPeoplePropsHooks";
+import withPeopleProps from "./withPeopleProps";
 
 export { PeopleList };
 
