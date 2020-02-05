@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
+import useFetch from "libraries/useFetch";
 import { Loader, ErrorCmp } from "components/common";
 import styles from "./profile.module.css";
 
 const Profile = ({ match, user, isLoading, error, fetchUser }) => {
-  useEffect(
-    () => {
-      fetchUser(match.params.id);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  useFetch(fetchUser, [match.params.id]);
 
   if (isLoading) return <Loader />;
   if (error) return <ErrorCmp {...error} />;

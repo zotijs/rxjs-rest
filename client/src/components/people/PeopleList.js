@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
+import useFetch from "libraries/useFetch";
 import { Person } from "./components";
 import { Loader, ErrorCmp } from "components/common";
 import styles from "./people.module.css";
 
 const PeopleList = ({ users, isLoading, error, fetchUsers, deleteUser }) => {
-  useEffect(
-    () => {
-      fetchUsers();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  useFetch(fetchUsers);
 
   if (isLoading) return <Loader />;
   if (error) return <ErrorCmp {...error} />;
