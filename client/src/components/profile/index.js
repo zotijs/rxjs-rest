@@ -1,5 +1,5 @@
 import Profile from "./Profile";
-import withProfileProps from "./withProfilePropsHooks";
+import withProfileProps from "./withProfileProps";
 
 export { Profile };
 
